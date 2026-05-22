@@ -217,5 +217,5 @@ Construit avec soin par **Nicétas** — Full-Stack Developer & AI Enthusiast.
 ---
 
 ## Licence
-
-Libre d'utilisation, de modification et de distribution.
+© 2026 Nicétas HOUESSOU — Tous droits réservés.
+Projet réalisé dans le cadre d'un test technique. Non autorisé à la redistribution.
