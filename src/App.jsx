@@ -139,7 +139,7 @@ function extractJsonArray(raw) {
 }
 
 // ─── API call with AbortController (Gemini) ──────────────────────────────────
-const GEMINI_API_KEY = "AIzaSyC0c0zRt-lQ3Q3z90YHkOoowCIziTX5NhU"; // ← ✏️ remplace par ta clé Google AI Studio
+const GEMINI_API_KEY = "#"; // ← ✏️ remplace par ta clé Google AI Studio
 
 async function fetchQuestions(jobTitle, lang, seniority, signal) {
   const seniorityNote = {
