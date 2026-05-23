@@ -133,12 +133,14 @@ function extractJsonArray(raw) {
     try {
       const p = JSON.parse(s);
       if (Array.isArray(p) && p.length > 0) return p;
-    } catch (_) { /* intentionally empty — try next candidate */ }
+    } catch { /* intentionally empty — try next candidate */ } // eslint-disable-line no-empty
   }
   throw new Error("Could not parse the API response. Please try again.");
 }
 
-// ─── API call with AbortController ───────────────────────────────────────────
+// ─── API call with AbortController (Gemini) ──────────────────────────────────
+const GEMINI_API_KEY = "AIzaSyC0c0zRt-lQ3Q3z90YHkOoowCIziTX5NhU"; // ← ✏️ remplace par ta clé Google AI Studio
+
 async function fetchQuestions(jobTitle, lang, seniority, signal) {
   const seniorityNote = {
     junior:    { en: "Entry-level candidate (0-2 years). Focus on fundamentals, learning mindset, and potential.", fr: "Candidat junior (0-2 ans). Focus sur les fondamentaux, la curiosité et le potentiel." },
@@ -188,25 +190,27 @@ Règles :
 Réponds UNIQUEMENT avec un tableau JSON valide de 3 chaînes. Zéro préambule. Zéro markdown.
 ["Q1 ?", "Q2 ?", "Q3 ?"]`;
 
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    signal,
-    body: JSON.stringify({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 900,
-      messages: [{ role: "user", content: prompt }],
-    }),
-  });
+  const res = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      signal,
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: { temperature: 0.7, maxOutputTokens: 900 },
+      }),
+    }
+  );
 
   if (!res.ok) {
     let msg = `API error ${res.status}`;
-    try { const e = await res.json(); msg = e?.error?.message || msg; } catch (_) { /* use default msg */ }
+    try { const e = await res.json(); msg = e?.error?.message || msg; } catch { /* use default msg */ } // eslint-disable-line no-empty
     throw new Error(msg);
   }
 
   const data = await res.json();
-  const raw = data.content?.find(b => b.type === "text")?.text?.trim() ?? "";
+  const raw = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? "";
   if (!raw) throw new Error("Empty response from API.");
 
   const questions = extractJsonArray(raw);
