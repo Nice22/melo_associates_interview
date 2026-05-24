@@ -1,9 +1,3 @@
-C'est noté. J'ai retiré le lien de la démo qui ne fonctionne pas et j'ai créé un guide d'installation et de configuration ultra-complet.
-
-Voici le fichier `README.md` restructuré avec la procédure exacte pour configurer, activer et intégrer la clé `VITE_ANTHROPIC_API_KEY` dans un environnement de développement local ou de production :
-
----
-
 # 🎯 Interview Question Generator
 
 Un outil propulsé par l'IA qui génère instantanément 3 questions d'entretien calibrées selon le rôle et le niveau d'expérience du candidat.
