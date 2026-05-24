@@ -44,60 +44,60 @@ const MAX_HISTORY = 6;
 
 const i18n = {
   en: {
-    badge:         "AI · Live",
-    title1:        "Interview Question",
-    title2:        "Generator",
-    subtitle:      "Select a role, seniority level, and language — get 3 sharp questions instantly.",
-    jobLabel:      "Job Title",
-    seniorLabel:   "Seniority Level",
-    placeholder:   "e.g. AI Research Engineer, Growth Lead…",
-    generate:      "Generate Questions",
-    generating:    "Generating…",
-    craftingFor:   (r, s) => `Crafting ${s} questions for ${r}…`,
-    copyAll:       "Copy all",
-    copiedAll:     "✓ All copied",
-    regenerate:    "↺ Regenerate",
-    copy:          "Copy",
-    copied:        "✓ Copied",
-    tip:           'Tip: Add stack or context for sharper results — try "Senior Backend · Node.js & PostgreSQL".',
-    recentLabel:   "Recent",
-    restore:       "Restore →",
-    errTitle:      "Generation failed",
-    emptyTitle:    "Ready to generate",
-    emptyBody:     "Select a role and seniority level to generate 3 tailored interview questions.",
-    diffEasy:      "Easy",
-    diffMed:       "Medium",
-    diffHard:      "Hard",
-    customRole:    "✏️  Custom role…",
-    selectRole:    "Select a role…",
+    badge:       "AI · Live",
+    title1:      "Interview Question",
+    title2:      "Generator",
+    subtitle:    "Select a role, seniority level, and language — get 3 sharp questions instantly.",
+    jobLabel:    "Job Title",
+    seniorLabel: "Seniority Level",
+    placeholder: "e.g. AI Research Engineer, Growth Lead…",
+    generate:    "Generate Questions",
+    generating:  "Generating…",
+    craftingFor: (r, s) => `Crafting ${s} questions for ${r}…`,
+    copyAll:     "Copy all",
+    copiedAll:   "✓ All copied",
+    regenerate:  "↺ Regenerate",
+    copy:        "Copy",
+    copied:      "✓ Copied",
+    tip:         'Tip: Add stack or context for sharper results — try "Senior Backend · Node.js & PostgreSQL".',
+    recentLabel: "Recent",
+    restore:     "Restore →",
+    errTitle:    "Generation failed",
+    emptyTitle:  "Ready to generate",
+    emptyBody:   "Select a role and seniority level to generate 3 tailored interview questions.",
+    diffEasy:    "Easy",
+    diffMed:     "Medium",
+    diffHard:    "Hard",
+    customRole:  "✏️  Custom role…",
+    selectRole:  "Select a role…",
   },
   fr: {
-    badge:         "IA · Live",
-    title1:        "Générateur de",
-    title2:        "Questions d'entretien",
-    subtitle:      "Sélectionne un rôle, un niveau et une langue — 3 questions précises en secondes.",
-    jobLabel:      "Intitulé du poste",
-    seniorLabel:   "Niveau d'expérience",
-    placeholder:   "ex. Ingénieur IA, Lead Growth, Architecte Cloud…",
-    generate:      "Générer les questions",
-    generating:    "Génération…",
-    craftingFor:   (r, s) => `Génération des questions ${s} pour ${r}…`,
-    copyAll:       "Tout copier",
-    copiedAll:     "✓ Copié",
-    regenerate:    "↺ Régénérer",
-    copy:          "Copier",
-    copied:        "✓ Copié",
-    tip:           'Conseil : Ajoute la stack ou le contexte — ex. "Backend Senior · Node.js & PostgreSQL".',
-    recentLabel:   "Récents",
-    restore:       "Restaurer →",
-    errTitle:      "Échec de génération",
-    emptyTitle:    "Prêt à générer",
-    emptyBody:     "Sélectionne un rôle et un niveau d'expérience pour obtenir 3 questions sur mesure.",
-    diffEasy:      "Facile",
-    diffMed:       "Moyen",
-    diffHard:      "Difficile",
-    customRole:    "✏️  Rôle personnalisé…",
-    selectRole:    "Sélectionne un rôle…",
+    badge:       "IA · Live",
+    title1:      "Générateur de",
+    title2:      "Questions d'entretien",
+    subtitle:    "Sélectionne un rôle, un niveau et une langue — 3 questions précises en secondes.",
+    jobLabel:    "Intitulé du poste",
+    seniorLabel: "Niveau d'expérience",
+    placeholder: "ex. Ingénieur IA, Lead Growth, Architecte Cloud…",
+    generate:    "Générer les questions",
+    generating:  "Génération…",
+    craftingFor: (r, s) => `Génération des questions ${s} pour ${r}…`,
+    copyAll:     "Tout copier",
+    copiedAll:   "✓ Copié",
+    regenerate:  "↺ Régénérer",
+    copy:        "Copier",
+    copied:      "✓ Copié",
+    tip:         'Conseil : Ajoute la stack ou le contexte — ex. "Backend Senior · Node.js & PostgreSQL".',
+    recentLabel: "Récents",
+    restore:     "Restaurer →",
+    errTitle:    "Échec de génération",
+    emptyTitle:  "Prêt à générer",
+    emptyBody:   "Sélectionne un rôle et un niveau d'expérience pour obtenir 3 questions sur mesure.",
+    diffEasy:    "Facile",
+    diffMed:     "Moyen",
+    diffHard:    "Difficile",
+    customRole:  "✏️  Rôle personnalisé…",
+    selectRole:  "Sélectionne un rôle…",
   },
 };
 
@@ -105,7 +105,7 @@ const i18n = {
 const DIFF_KEYWORDS = {
   hard: ["architect", "trade-off", "tradeoff", "scale", "production", "failure",
          "critical", "ambiguous", "conflict", "strategy", "vision", "stakeholder",
-         "architecturer", "arbitrage", "scalabilité", "production", "échec",
+         "architecturer", "arbitrage", "scalabilité", "échec",
          "critique", "ambigu", "conflit", "stratégie", "parties prenantes"],
   easy: ["describe", "tell me", "what is", "have you", "do you", "example of",
          "décris", "parle-moi", "qu'est-ce", "avez-vous", "as-tu", "exemple de"],
@@ -138,8 +138,8 @@ function extractJsonArray(raw) {
   throw new Error("Could not parse the API response. Please try again.");
 }
 
-// ─── API call with AbortController (Gemini) ──────────────────────────────────
-const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY; // ← ✏️ remplace par ta clé Google AI Studio
+// ─── API call with AbortController (Anthropic Claude) ────────────────────────
+const ANTHROPIC_API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY;
 
 async function fetchQuestions(jobTitle, lang, seniority, signal) {
   const seniorityNote = {
@@ -190,19 +190,21 @@ Règles :
 Réponds UNIQUEMENT avec un tableau JSON valide de 3 chaînes. Zéro préambule. Zéro markdown.
 ["Q1 ?", "Q2 ?", "Q3 ?"]`;
 
-
-  const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      signal,
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.7, maxOutputTokens: 900 },
-      }),
-    }
-  );
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": ANTHROPIC_API_KEY,
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true",
+    },
+    signal,
+    body: JSON.stringify({
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 900,
+      messages: [{ role: "user", content: prompt }],
+    }),
+  });
 
   if (!res.ok) {
     let msg = `API error ${res.status}`;
@@ -211,7 +213,7 @@ Réponds UNIQUEMENT avec un tableau JSON valide de 3 chaînes. Zéro préambule.
   }
 
   const data = await res.json();
-  const raw = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? "";
+  const raw = data.content?.find(b => b.type === "text")?.text?.trim() ?? "";
   if (!raw) throw new Error("Empty response from API.");
 
   const questions = extractJsonArray(raw);
@@ -222,7 +224,7 @@ Réponds UNIQUEMENT avec un tableau JSON valide de 3 chaînes. Zéro préambule.
 // ─── useCopy (memory-leak-safe) ───────────────────────────────────────────────
 function useCopy(getText) {
   const [copied, setCopied] = useState(false);
-  const timerRef  = useRef(null);
+  const timerRef   = useRef(null);
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -404,36 +406,36 @@ function EmptyState({ lang }) {
 
 // ─── Main App ─────────────────────────────────────────────────────────────────
 export default function App() {
-  const [jobTitle,      setJobTitle]      = useState("");
-  const [customTitle,   setCustomTitle]   = useState("");
-  const [lang,          setLang]          = useState("en");
-  const [seniority,     setSeniority]     = useState("mid");
-  const [questions,     setQuestions]     = useState([]);
-  const [loading,       setLoading]       = useState(false);
-  const [error,         setError]         = useState("");
-  const [showCards,     setShowCards]     = useState(false);
-  const [generatedFor,  setGeneratedFor]  = useState({ role: "", seniority: "", lang: "" });
-  const [history,       setHistory]       = useState([]);
+  const [jobTitle,     setJobTitle]     = useState("");
+  const [customTitle,  setCustomTitle]  = useState("");
+  const [lang,         setLang]         = useState("en");
+  const [seniority,    setSeniority]    = useState("mid");
+  const [questions,    setQuestions]    = useState([]);
+  const [loading,      setLoading]      = useState(false);
+  const [error,        setError]        = useState("");
+  const [showCards,    setShowCards]    = useState(false);
+  const [generatedFor, setGeneratedFor] = useState({ role: "", seniority: "", lang: "" });
+  const [history,      setHistory]      = useState([]);
 
-  const customRef  = useRef(null);
-  const abortRef   = useRef(null);  // AbortController ref — prevents race conditions
+  const customRef = useRef(null);
+  const abortRef  = useRef(null); // AbortController — prevents race conditions
 
   const activeTitle = (jobTitle === "__custom__" ? customTitle : jobTitle).trim();
   const canSubmit   = activeTitle.length > 0 && !loading;
   const t           = i18n[lang];
 
-  // Dropdown items — memoized to avoid recreating on every render
+  // Memoized dropdown items
   const roleItems = useMemo(() => [
     ...ROLES.map(r => ({ value: r, label: r })),
     { value: "__custom__", label: t.customRole, accent: true },
   ], [t.customRole]);
 
-  // Auto-focus custom input when it appears
+  // Auto-focus custom input
   useEffect(() => {
     if (jobTitle === "__custom__") customRef.current?.focus();
   }, [jobTitle]);
 
-  // Animate cards via rAF (not setTimeout)
+  // Animate cards via rAF
   useEffect(() => {
     if (questions.length === 3) {
       const id = requestAnimationFrame(() => setShowCards(true));
@@ -441,13 +443,11 @@ export default function App() {
     }
   }, [questions]);
 
-  // Cancel any in-flight request on unmount
+  // Abort on unmount
   useEffect(() => () => abortRef.current?.abort(), []);
 
   const handleGenerate = useCallback(async () => {
     if (!canSubmit) return;
-
-    // Cancel previous in-flight request (race condition fix)
     abortRef.current?.abort();
     abortRef.current = new AbortController();
 
@@ -467,7 +467,7 @@ export default function App() {
         return [entry, ...deduped].slice(0, MAX_HISTORY);
       });
     } catch (err) {
-      if (err.name === "AbortError") return; // silently ignore cancelled requests
+      if (err.name === "AbortError") return;
       setError(err.message || "Something went wrong. Please try again.");
       setGeneratedFor({ role: "", seniority: "", lang: "" });
     } finally {
@@ -488,7 +488,6 @@ export default function App() {
     requestAnimationFrame(() => setShowCards(true));
   }, []);
 
-  // Stable getText ref for copyAll — avoids unstable useCallback dependency
   const copyAllTextRef = useRef("");
   useEffect(() => {
     copyAllTextRef.current =
@@ -539,7 +538,6 @@ export default function App() {
 
         {/* Form */}
         <div style={{ background: "rgba(255,255,255,0.025)", border: `1px solid ${C.border}`, borderRadius: "18px", padding: "24px", marginBottom: "24px" }}>
-          {/* Job title */}
           <label style={{ display: "block", fontSize: "11px", fontWeight: 600, color: C.textSecondary, letterSpacing: "0.09em", textTransform: "uppercase", marginBottom: "10px" }}>{t.jobLabel}</label>
           <Dropdown value={jobTitle} onChange={v => { setJobTitle(v); setError(""); }} disabled={loading} placeholder={t.selectRole} items={roleItems} />
           {jobTitle === "__custom__" && (
@@ -554,7 +552,6 @@ export default function App() {
             />
           )}
 
-          {/* Seniority */}
           <label style={{ display: "block", fontSize: "11px", fontWeight: 600, color: C.textSecondary, letterSpacing: "0.09em", textTransform: "uppercase", margin: "16px 0 10px" }}>{t.seniorLabel}</label>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "8px" }}>
             {SENIORITY_LEVELS.map(s => {
@@ -575,7 +572,6 @@ export default function App() {
             })}
           </div>
 
-          {/* Generate button */}
           <button
             onClick={handleGenerate} disabled={!canSubmit}
             style={{ width: "100%", padding: "13px", marginTop: "16px", background: canSubmit ? "linear-gradient(135deg,#6ee7b7,#3b82f6)" : "rgba(255,255,255,0.05)", border: "none", borderRadius: "10px", color: canSubmit ? "#090b10" : "rgba(255,255,255,0.18)", fontSize: "15px", fontWeight: 700, cursor: canSubmit ? "pointer" : "not-allowed", transition: "opacity 0.18s, transform 0.1s", letterSpacing: "0.01em" }}
@@ -641,7 +637,7 @@ export default function App() {
         )}
 
         <p style={{ marginTop: "56px", textAlign: "center", fontSize: "10px", color: "rgba(255,255,255,0.1)", fontFamily: "'DM Mono',monospace", letterSpacing: "0.05em" }}>
-          Powered by Claude AI · Melo Associates Technical Assessment
+          Powered by Claude AI (Anthropic) · Melo Associates Technical Assessment
         </p>
       </div>
     </div>
