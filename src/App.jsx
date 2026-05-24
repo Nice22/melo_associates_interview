@@ -636,9 +636,7 @@ export default function App() {
           </>
         )}
 
-        <p style={{ marginTop: "56px", textAlign: "center", fontSize: "10px", color: "rgba(255,255,255,0.1)", fontFamily: "'DM Mono',monospace", letterSpacing: "0.05em" }}>
-          Powered by Claude AI (Anthropic) · Melo Associates Technical Assessment
-        </p>
+        
       </div>
     </div>
   );
