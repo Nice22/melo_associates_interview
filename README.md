@@ -2,6 +2,9 @@
 
 Un outil propulsé par l'IA qui génère instantanément 3 questions d'entretien calibrées selon le rôle et le niveau d'expérience du candidat.
 
+🔗 Live demo → melo-associates-interview.vercel.app
+
+
 ## C'est quoi ce projet ?
 
 Application web qui permet de générer en quelques secondes des questions d'entretien pertinentes pour n'importe quel poste tech.
