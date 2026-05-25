@@ -1,6 +1,8 @@
 # 🎯 Interview Question Generator
 An AI-powered tool that instantly generates 3 tailored interview questions based on the candidate's target role and seniority level.
+
 🔗 Live demo → [melo-associates-interview.vercel.app](https://melo-associates-interview.vercel.app)
+
 ## What is this project?
 A web application designed to generate relevant interview questions for any tech position in seconds.
 Simply select a job title, seniority level, and language — the AI will produce 3 specific and highly targeted questions: behavioral, technical, and situational.
