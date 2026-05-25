@@ -202,7 +202,7 @@ Réponds UNIQUEMENT avec un tableau JSON valide de 3 chaînes. Zéro préambule.
 
     signal,
     body: JSON.stringify({
-      model: "claude-haiku-4-5-20251001",
+      model: "anthropic/claude-3.5-haiku",
       max_tokens: 900,
       messages: [{ role: "user", content: prompt }],
     }),
@@ -215,7 +215,7 @@ Réponds UNIQUEMENT avec un tableau JSON valide de 3 chaînes. Zéro préambule.
   }
 
   const data = await res.json();
-  const raw = data.content?.find(b => b.type === "text")?.text?.trim() ?? "";
+  const raw = data.choices?.[0]?.message?.content?.trim() ?? "";
   if (!raw) throw new Error("Empty response from API.");
 
   const questions = extractJsonArray(raw);
