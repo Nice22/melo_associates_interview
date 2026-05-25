@@ -139,7 +139,7 @@ function extractJsonArray(raw) {
 }
 
 // ─── API call with AbortController (Anthropic Claude) ────────────────────────
-const ANTHROPIC_API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY;
+const VITE_NVIDIA_API_KEY = import.meta.env.VITE_NVIDIA_API_KEY;
 
 async function fetchQuestions(jobTitle, lang, seniority, signal) {
   const seniorityNote = {
@@ -190,14 +190,16 @@ Règles :
 Réponds UNIQUEMENT avec un tableau JSON valide de 3 chaînes. Zéro préambule. Zéro markdown.
 ["Q1 ?", "Q2 ?", "Q3 ?"]`;
 
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
+  const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "x-api-key": ANTHROPIC_API_KEY,
-      "anthropic-version": "2023-06-01",
-      "anthropic-dangerous-direct-browser-access": "true",
-    },
+  "Content-Type": "application/json",
+  "Authorization": `Bearer ${VITE_NVIDIA_API_KEY}`,
+  "HTTP-Referer": window.location.origin, // Optionnel mais recommandé par OpenRouter
+  "X-Title": "Melo Associates Interview Generator", // Optionnel
+},
+
     signal,
     body: JSON.stringify({
       model: "claude-haiku-4-5-20251001",

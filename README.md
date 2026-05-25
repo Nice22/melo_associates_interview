@@ -12,7 +12,7 @@ Sélectionne un intitulé de poste, un niveau d'expérience et une langue — l'
 
 | Fonctionnalité | Description |
 | --- | --- |
-| 🤖 **Génération IA** | Questions créées par Claude (Anthropic) en temps réel |
+| 🤖 **Génération IA** | Questions créées par Openrouter (NVIDIA) en temps réel |
 | 🎯 **Calibrage par séniorité** | Junior / Mid / Senior / Principal — les questions s'adaptent |
 | 🌍 **Bilingue FR/EN** | L'interface et les questions switchent en un clic |
 | 📋 **Copie rapide** | Copie une question ou toutes en un clic |
@@ -25,7 +25,7 @@ Sélectionne un intitulé de poste, un niveau d'expérience et une langue — l'
 
 * **React 18** → Interface utilisateur
 * **Vite** → Outil de développement et compilation
-* **Anthropic API** → Modèle IA (`claude-3-5-haiku` / `claude-4-5`)
+* **NVIDIA API** → Modèle IA 
 * **CSS-in-JS inline** → Styles sans dépendance externe
 
 *Pas de backend. Pas de base de données. Pas de framework CSS. Un seul fichier composant React auto-suffisant.*
@@ -56,7 +56,7 @@ Pour des raisons de sécurité et de lutte contre les abus, Anthropic n'offre pl
 
 ## 💻 Intégration dans l'Environnement de Développement
 
-Le projet utilise **Vite** comme outil de build. Pour des raisons de sécurité, Vite exige que les variables d'environnement accessibles côté client soient préfixées par `VITE_`. La variable attendue par l'application s'appelle impérativement **`VITE_ANTHROPIC_API_KEY`**.
+Le projet utilise **Vite** comme outil de build. Pour des raisons de sécurité, Vite exige que les variables d'environnement accessibles côté client soient préfixées par `VITE_`. La variable attendue par l'application s'appelle impérativement **`VITE_NVIDIA_API_KEY`**.
 
 ### 1. Configuration en Local (Développement)
 
@@ -71,7 +71,7 @@ touch .env.local
 
 2. Ouvrez le fichier et ajoutez-y votre clé API sous cette forme exacte :
 ```env
-VITE_ANTHROPIC_API_KEY=votre_cle_sk-ant-..._ici
+VITE_NVIDIA_API_KEY=votre_cle_sk-ant-..._ici
 
 ```
 
@@ -84,8 +84,8 @@ Puisque le fichier `.env.local` est ignoré par Git, il faut configurer la varia
 
 1. Allez sur votre tableau de bord **Vercel** et sélectionnez votre projet.
 2. Allez dans l'onglet **Settings** ➔ **Environment Variables**.
-3. Dans le champ **Key**, inscrivez : `VITE_ANTHROPIC_API_KEY`
-4. Dans le champ **Value**, collez votre clé Anthropic complète (`sk-ant-...`).
+3. Dans le champ **Key**, inscrivez : `VITE_NVIDIA_API_KEY`
+4. Dans le champ **Value**, collez votre clé NVIDIA complète (`sk-ant-...`).
 5. Cliquez sur **Add**.
 6. Pour appliquer le changement, allez dans l'onglet **Deployments**, cliquez sur les trois petits points de votre dernier build et sélectionnez **Redeploy**.
 
@@ -96,7 +96,7 @@ Puisque le fichier `.env.local` est ignoré par Git, il faut configurer la varia
 ### Prérequis
 
 * Node.js LTS installé (v18+)
-* Votre clé `VITE_ANTHROPIC_API_KEY` configurée dans le fichier `.env.local`.
+* Votre clé `VITE_NVIDIA_API_KEY` configurée dans le fichier `.env.local`.
 
 ### Procédure d'exécution
 
