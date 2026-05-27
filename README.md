@@ -6,6 +6,7 @@ An AI-powered tool that instantly generates 3 tailored interview questions based
 ## What is this project?
 A web application designed to generate relevant interview questions for any tech position in seconds.
 Simply select a job title, seniority level, and language — the AI will produce 3 specific and highly targeted questions: behavioral, technical, and situational.
+
 ## Features
 
 | Feature | Description |
@@ -25,7 +26,8 @@ Simply select a job title, seniority level, and language — the AI will produce
 * **OpenRouter API** → Routing and LLM access (Claude 3.5 Haiku)
 * **Inline CSS-in-JS** → Zero external styling dependencies
 *No backend. No database. No CSS framework. A single, self-contained React component file.*
----
+
+
 ## 🔑 Complete Guide: API Key Creation and Configuration
 The application utilizes the **OpenRouter** gateway to query artificial intelligence models in a standardized and seamless manner.
 ### Step 1: Obtain an OpenRouter API Key
@@ -35,7 +37,8 @@ The application utilizes the **OpenRouter** gateway to query artificial intellig
 4. Click **Create Key**, give it a name (e.g., `Melo Generator`), and set an optional credit limit if desired.
 5. **Copy the generated key immediately** (it usually starts with `sk-or-...`). *Note: It will never be displayed again.*
 6. Ensure your account balance has sufficient funds (or use a free model identifier of your choice within the code if needed).
----
+
+
 ## 💻 Environment Variables Integration
 The project is built with **Vite**. For security reasons, Vite requires client-accessible environment variables to be prefixed with `VITE_`. The application explicitly expects the variable to be named **`VITE_NVIDIA_API_KEY`**.
 ### 1. Local Configuration (Development)
@@ -83,6 +86,7 @@ melo_associates_interview/
     ├── main.jsx
     └── App.jsx     → Entire logic, UI, and API calls (single component)
 ```
+
 ## Key Security
 
 | Environment | Configuration File | Security Status |
@@ -92,6 +96,7 @@ melo_associates_interview/
 
 > ⚠️ **Critical Security Reminder:** Never push your .env.local file or raw API keys to a public GitHub repository. Doing so will expose your balance to automated scraping scripts that can drain your account funds within minutes.
 > 
+
 
 ## 🔭 Roadmap & Known Improvements
 
@@ -120,7 +125,6 @@ Layer 2 — Prompt-level instruction (safety net): add an explicit instruction a
 
 **Why a branch and not in the current version:** The blocklist requires careful curation to avoid false positives. It deserves its own PR with proper test cases rather than a rushed implementation.
 
-
 ### `feature/persistent-history`
 Persist the generation history in `localStorage` so it survives page refreshes. Currently the history lives in React state only and is lost on reload.
 
@@ -136,6 +140,7 @@ Project developed as part of a technical assessment for — **Melo Associates**.
 Built with passion by **Nicétas HOUESSOU** — *Full-Stack Developer & AI Enthusiast*.
 > *"Creating is first and foremost about innovating — and if it brings a smile, that's even better."*
 > 
+
 ## License
 © 2026 Nicétas HOUESSOU — All rights reserved.
 *Project developed for a technical test. Unauthorized redistribution is prohibited.*
