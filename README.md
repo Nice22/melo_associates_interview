@@ -92,6 +92,47 @@ melo_associates_interview/
 
 > ⚠️ **Critical Security Reminder:** Never push your .env.local file or raw API keys to a public GitHub repository. Doing so will expose your balance to automated scraping scripts that can drain your account funds within minutes.
 > 
+
+## 🔭 Roadmap & Known Improvements
+
+These improvements were identified at the end of the project's delivery and are being tracked in separate branches. The goal is to keep the main branch clean and stable while integrating new features.
+
+### `feature/job-title-filter` ← *In progress*
+**Problem identified:** The app currently accepts any free-text input as a job title — including inappropriate, offensive, or non-professional entries (e.g. "robber", "hitman", "drug dealer"). The AI may generate questions for these inputs, which is not acceptable in a professional recruiting tool.
+
+**Planned solution — two-layer protection:**
+
+Layer 1 — Client-side filter (instant, before API call):
+```js
+const BLOCKED_TERMS = [
+  "braqueur", "assassin", "dealer", "voleur",
+  "robber", "thief", "killer", "drug", "terrorist", "hitman"
+];
+
+function isValidJobTitle(title) {
+  const lower = title.toLowerCase();
+  return !BLOCKED_TERMS.some(term => lower.includes(term));
+}
+```
+If the title contains a blocked term → display a bilingual error message and abort the API call immediately.
+
+Layer 2 — Prompt-level instruction (safety net): add an explicit instruction asking the model to refuse generation and return a structured error if the submitted role is not a legitimate professional position.
+
+**Why a branch and not in the current version:** The blocklist requires careful curation to avoid false positives. It deserves its own PR with proper test cases rather than a rushed implementation.
+
+---
+
+### `feature/persistent-history`
+Persist the generation history in `localStorage` so it survives page refreshes. Currently the history lives in React state only and is lost on reload.
+
+### `feature/question-count-selector`
+Let the user choose between 3, 5, or 10 questions per generation via a simple slider or toggle.
+
+### `feature/export-pdf`
+Allow users to export generated questions as a clean, formatted PDF — ready to use in actual interviews without any extra formatting work.
+
+---
+
 ## About
 Project developed as part of a technical assessment for — **Melo Associates**.
 Built with passion by **Nicétas HOUESSOU** — *Full-Stack Developer & AI Enthusiast*.
