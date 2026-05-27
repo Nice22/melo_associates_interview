@@ -120,7 +120,6 @@ Layer 2 — Prompt-level instruction (safety net): add an explicit instruction a
 
 **Why a branch and not in the current version:** The blocklist requires careful curation to avoid false positives. It deserves its own PR with proper test cases rather than a rushed implementation.
 
----
 
 ### `feature/persistent-history`
 Persist the generation history in `localStorage` so it survives page refreshes. Currently the history lives in React state only and is lost on reload.
@@ -131,7 +130,6 @@ Let the user choose between 3, 5, or 10 questions per generation via a simple sl
 ### `feature/export-pdf`
 Allow users to export generated questions as a clean, formatted PDF — ready to use in actual interviews without any extra formatting work.
 
----
 
 ## About
 Project developed as part of a technical assessment for — **Melo Associates**.
